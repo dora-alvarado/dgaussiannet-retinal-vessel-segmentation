@@ -1,0 +1,2 @@
+2021-11-03 15:04:34,973 - trainer.trainer - val_loss improved from inf to 14.8673, saving model to path
+2021-11-03 15:04:35,065 - trainer.trainer - Epoch 0001/0001:  loss: 16.1418 - acc: 0.1527 - val_loss: 14.8673 - val_acc: 0.1671 - best_val_loss: 14.8673 - best_val_acc: 0.1671 
