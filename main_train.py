@@ -57,7 +57,7 @@ if __name__=='__main__':
     # initialize model
     model_name = config.model_name
     print(model_name)
-    model = DGaussianNet(n_channels=1, n_classes=2)
+    model = DGaussianNet(n_channels=9, n_classes=2)
 
     # set loss function and optimizer
     weights = torch.Tensor([0.1, 0.9])
