@@ -24,7 +24,7 @@ if __name__=='__main__':
     listOfFiles_imgs = np.asarray([name for name in listOfFiles_imgs if name.endswith(dataset_config['image_ext'])])
 
     percent_validation = 0.1
-    all_idx = np.asarray(range(len(listOfFiles_imgs)), dtype=np.int)
+    all_idx = np.asarray(range(len(listOfFiles_imgs)), dtype=np.int32)
     idx_train_imgs, idx_val_imgs = train_test_split(all_idx, test_size=percent_validation, random_state=0)
 
     img_filenames = {
@@ -45,7 +45,7 @@ if __name__=='__main__':
                          img_ext=dataset_config['image_ext'],
                          gt_ext=dataset_config['gt_ext'],
                          n_patches=patches[x],
-                         transform=False)
+                         transform=True)
         for x in ['train', 'val']
     }
 
@@ -60,9 +60,7 @@ if __name__=='__main__':
     model = DGaussianNet(n_channels=9, n_classes=2)
 
     # set loss function and optimizer
-    weights = torch.Tensor([0.1, 0.9])
     criteria = CrossEntropyLoss()
-    criteria_aux = CrossEntropyLoss(weight=weights)
     optimizer = optim_selector(config.optimizer, model, learning_rate=config.learning_rate)
     # scheduler = CyclicLRWithRestarts(optimizer, config.batch_size, patches['train'], restart_period=10, t_mult=1.2,
     #                                  policy="cosine")

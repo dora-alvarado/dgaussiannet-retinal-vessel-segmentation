@@ -99,10 +99,11 @@ class RetinaDataset(Dataset):
             self.lst_gts.append(mask)
 
         self.lst_imgs = np.asarray(self.lst_imgs)
+        self.lst_orig_imgs = np.asarray(self.lst_orig_imgs)
         self.lst_gts = np.asarray(self.lst_gts)
         self.lst_fovs = np.asarray(self.lst_fovs)
         # global normalization
-        self.lst_imgs = self.data_normalization(self.lst_imgs, max_val=1., dtype=np.float)
+        self.lst_imgs = self.data_normalization(self.lst_imgs, max_val=1., dtype=np.float64)
         self.n_imgs = len(self.lst_img_filenames)
 
     def preproc_grayscale(self, image, **kargs):
