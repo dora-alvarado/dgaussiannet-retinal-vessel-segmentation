@@ -48,7 +48,7 @@ if __name__=='__main__':
     eval(dataset, config.num_imgs, inside_FoV=True, logfile_path=experiment_path + 'performance_withFoV.log')
     n_rows = round(config.num_imgs / config.num_group)
     print(n_rows, config.num_group)
-    all_originals = paste_imgs((dataset.lst_orig_imgs[:config.num_imgs]*255).astype(np.uint8), n_rows=n_rows, n_cols=config.num_group, sep=0)
+    all_originals = paste_imgs((dataset.lst_orig_imgs[:config.num_imgs]).astype(np.uint8), n_rows=n_rows, n_cols=config.num_group, sep=0)
     all_gts = paste_imgs((dataset.lst_gts[:config.num_imgs]*255).astype(np.uint8), n_rows=n_rows, n_cols=config.num_group, sep=0)
     all_fovs = paste_imgs((dataset.lst_fovs[:config.num_imgs]*255).astype(np.uint8), n_rows=n_rows, n_cols=config.num_group, sep=0)
     all_predictions = paste_imgs((eval.lst_predictions*255).astype(np.uint8), n_rows=n_rows, n_cols=config.num_group, sep=0)

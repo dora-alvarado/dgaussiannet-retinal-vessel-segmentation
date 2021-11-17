@@ -26,3 +26,29 @@ def paste_imgs(lst_imgs, n_rows, n_cols, sep=5):
     if sep>0:
         return new_im[sep:-sep,sep:-sep]
     return new_im
+
+def plot_errors(im_pred, im_gt, lineThickness=1):
+    im_pred = im_pred>0.5
+    m, n = im_gt.shape
+    # output image
+    new_im = np.ones((m, n, 3), dtype=np.uint8)*255#np.copy(img).astype(np.uint8)
+    # colors for well predicted, false positives and false negative
+    color_gt = (0, 0, 0)
+    color_fp = (255, 0, 0)
+    color_fn = (0, 0, 255)
+    # well predicted
+    tp = (im_pred != 0) & (im_gt != 0)
+    idx = np.asarray(np.argwhere(tp), dtype=int)
+    for y, x in idx:
+        new_im[y,x, :]=color_gt#cv2.circle(new_im, (x, y), lineThickness // 2, color_gt, -1)
+    # false positives
+    fp = (im_pred !=0) & (im_gt==0)
+    idx = np.asarray(np.argwhere(fp), dtype=int)
+    for y, x in idx:
+        new_im[y,x, :]=color_fp#cv2.circle(new_im, (x, y), lineThickness // 2, color_fp, -1)
+    # false negatives
+    fn = (im_pred == 0) & (im_gt != 0)
+    idx = np.asarray(np.argwhere(fn), dtype=int)
+    for y, x in idx:
+        new_im[y,x, :]=color_fn#cv2.circle(new_im, (x, y), lineThickness // 2, color_fn, -1)
+    return new_im
