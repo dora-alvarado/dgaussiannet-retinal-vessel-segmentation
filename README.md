@@ -3,6 +3,24 @@ PyTorch implementation of D-GaussianNet, based on conference paper [D-GaussianNe
 
 ![](figures/graphical_abstract.png)
 
+If you use this code please cite the paper using the bibtex reference below.
+
+```
+@InProceedings{Alvarado2021_dgaussiannet, 
+  title={D-GaussianNet: Adaptive Distorted Gaussian Matched Filter with Convolutional Neural Network for Retinal Vessel Segmentation},
+  author={Alvarado-Carrillo, Dora E and Ovalle-Magallanes, Emmanuel and Dalmau-Cede{\~n}o, Oscar S},
+  editor="Nguyen, Minh and Yan, Wei Qi and Ho, Harvey",
+  booktitle="Geometry and Vision",
+  year="2021",
+  publisher="Springer International Publishing",
+  address="Cham",
+  pages="378--392",
+  organization={Springer}, 
+  isbn="978-3-030-72073-5", 
+  doi={10.1007/978-3-030-72073-5_29}
+}
+```
+
 ## Abstract
 
 Automating retinal vessel segmentation is a primary element of computer-aided diagnostic systems for many retinal diseases. It facilitates the inspection of shape, width, tortuosity, and other blood vessel characteristics. In this paper, a new method that incorporates Distorted Gaussian Matched Filters (D-GMFs) with adaptive parameters as part of a Deep Convolutional Architecture is proposed. The D-GaussianNet includes D-GMF units, a variant of the Gaussian Matched Filter that considers curvature, 
